@@ -39,7 +39,7 @@ class CodeGeneratorServiceProvider extends ServiceProvider
 
         // publish frontend quasar-app
         $this->publishes([
-            $dir . 'frontend' => basepath('frontend'),
+            $dir . 'frontend' => base_path('frontend'),
         ], 'frontend');
     }
 
