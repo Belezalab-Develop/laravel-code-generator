@@ -27,7 +27,7 @@ class CreateRoutesCommand extends Command
                             {--routes-prefix=default-form : Prefix of the route group.}
                             {--controller-directory= : The directory where the controller is under.}
                             {--without-route-clause : Create the routes without where clause for the id.}
-                            {--routes-type= : The type of the route to create "api", "api-docs" or web.}
+                            {--routes-type= : The type of the route to create "api", "api-docs", "quasar" or web.}
                             {--api-version= : The api version to prefix your resurces with.}
                             {--template-name= : The template name to use when generating the code.}';
 
@@ -71,7 +71,7 @@ class CreateRoutesCommand extends Command
             ->replaceRouteIdClause($stub, $this->getRouteIdClause($input->withoutRouteClause))
             ->replacePrefix($stub, $namePrefix)
             ->replaceVersion($stub, $this->getVersion($input->apiVersion))
-            ->appendToRoutesFile($stub, $routesFile)
+            ->appendToRoutesFile($stub, $routesFile, $input->type)
             ->info('The routes were added successfully.');
     }
 
@@ -94,8 +94,12 @@ class CreateRoutesCommand extends Command
 
         if ($type == 'api') {
             $name = 'api-routes';
-        } else if ($type == 'api-docs') {
+        }
+        if ($type == 'api-docs') {
             $name = 'api-documentation-routes';
+        }
+        if ($type == 'quasar') {
+            $name = 'quasar-routes';
         }
 
         return $this->getStubContent($name);
@@ -192,8 +196,13 @@ class CreateRoutesCommand extends Command
      *
      * @return $this
      */
-    protected function appendToRoutesFile($stub, $routesFile)
+    protected function appendToRoutesFile($stub, $routesFile, $type)
     {
+        if ($type == 'quasar') {
+            $quasar_template = $this->getStubContent('quasar-routes-base');
+            $stub = $this->replaceTemplate('route-groups', $stub, $quasar_template);
+        }
+
         $this->appendContentToFile($routesFile, $stub);
 
         return $this;
@@ -291,7 +300,11 @@ class CreateRoutesCommand extends Command
         }
 
         if (!empty($prefix) || !empty($input->controllerDirectory)) {
-            $groupStub = $this->getStubContent('routes-group');
+            if ($input->type == 'quasar') {
+                $groupStub = $this->getStubContent('quasar-routes-group');
+            } else {
+                $groupStub = $this->getStubContent('routes-group');
+            }
 
             $this->replacePrefix($groupStub, $this->getGroupPrefix($prefix))
                 ->replaceRoutes($groupStub, $stub);
@@ -357,9 +370,22 @@ class CreateRoutesCommand extends Command
     {
         if (Helpers::isNewerThanOrEqualTo('5.3')) {
 
-            $file = ($type == 'api') ? 'api' : 'web';
+            switch ($type) {
+                case 'api':
+                    $file = 'routes/api.php';
+                    break;
+                case 'web':
+                    $file = 'routes/web.php';
+                    break;
+                case 'quasar':
+                    $file = 'frontend/src/router/routes.js';
+                    break;
+                default:
+                    $file = 'routes/web.php';
+                    break;
+            }
 
-            return base_path('routes/' . $file . '.php');
+            return base_path($file);
         }
 
         return app_path('Http/routes.php');

@@ -1,0 +1,4 @@
+          { path: 'index', name: 'index', component: () => import('pages/[% model_name_snake %]/Index') },
+          { path: 'create', name: 'create', component: () => import('pages/[% model_name_snake %]/Create') },
+          { path: 'show', name: 'show', component: () => import('pages/[% model_name_snake %]/Show') },
+          { path: 'edit', name: 'edit', component: () => import('pages/[% model_name_snake %]/Edit') }

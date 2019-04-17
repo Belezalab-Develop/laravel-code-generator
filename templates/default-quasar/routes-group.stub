@@ -1,7 +1,6 @@
-      { path: '/[% prefix %]',
-        name: '[% prefix %]',
-        component: { render: h => h('router-view') },
-        children: [
-          [% routes %]
-        ]
-      },
+
+Route::group([
+    [% prefix %]
+], function () {
+[% routes %]
+});
