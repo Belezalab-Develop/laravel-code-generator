@@ -178,6 +178,16 @@ class Config
     }
 
     /**
+     * Gets the quasar template name.
+     *
+     * @return string
+     */
+    public static function getQuasarTemplateName()
+    {
+        return self::getStringBaseValue('quasar_template');
+    }
+
+    /**
      * Gets the eloquent type to method collection.
      *
      * @return array
