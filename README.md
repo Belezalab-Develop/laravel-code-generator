@@ -1,3 +1,5 @@
+# Do not install this fork yet. Work in progress. Will remove this notice when the package is ready.
+---
 
 [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=An%20intelligent%20code%20generator%20for%20Laravel%20framework%20which%20will%20save%20you%20lots%20of%20time!&url=https://github.com/CrestApps/laravel-code-generator&hashtags=laravel,laravel-code-generator,laravel-crud,code-generator,crud-generator,laravel-crud-generator)
 
@@ -64,7 +66,7 @@ For full documentation and live demo please visit <a href="https://crestapps.com
 	php artisan vendor:publish --provider="CrestApps\CodeGenerator\CodeGeneratorServiceProvider" --tag=config
 	```
 
-4. Publish the frontend, ==observe that this overwrites any existing "frontend" folder in your base path==.
+4. Publish the frontend, **observe that this overwrites any existing "frontend" folder in your base path**.
 	```
 	php artisan vendor:publish --provider="CrestApps\CodeGenerator\CodeGeneratorServiceProvider" --tag=frontend
 	```
