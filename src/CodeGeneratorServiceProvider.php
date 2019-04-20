@@ -34,13 +34,13 @@ class CodeGeneratorServiceProvider extends ServiceProvider
 
         // publish the defaultquasar-template
         $this->publishes([
-            $dir . 'templates/default-quasar' => $this->codeGeneratorBase('templates/default-quasar'),
-        ], 'default-quasar-template');
+            $dir . 'templates/quasar' => $this->codeGeneratorBase('templates/quasar'),
+        ], 'quasar');
 
         // publish frontend quasar-app
         $this->publishes([
-            $dir . 'templates/frontend' => $this->codeGeneratorBase('templates/frontend'),
-        ], 'frontend-template');
+            $dir . 'templates/frontend' => base_path('frontend'),
+        ], 'frontend');
     }
 
     /**
