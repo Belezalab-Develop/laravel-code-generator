@@ -48,7 +48,7 @@ For full documentation and live demo please visit <a href="https://crestapps.com
 	```
 	composer require crestapps/laravel-code-generator --dev
 	```
- 
+
 2. **(You may skip this step when using Laravel >= 5.5)** To bootstrap the packages into your project while using command-line only, open the app/Providers/AppServiceProvider.php file in your project. Then, add the following code to the register() method.
 
 	Add the following line to bootstrap laravel-code-generator to the framework.
@@ -59,10 +59,26 @@ For full documentation and live demo please visit <a href="https://crestapps.com
 	}
 	```
 
-> A layout is required for the default views! The code generator allows you to create a layout using the command-line. Of cource you can use your own layout. You'll only need to include [CSS bootstrap framework](http://getbootstrap.com/ "CSS bootstrap framework") in your layout for the default templates to work properly. Additionally, you can chose to you design your own templetes using a different or no css framework. 
+3. Execute the following command from the command-line to publish the package's config file.
+	```
+	php artisan vendor:publish --provider="CrestApps\CodeGenerator\CodeGeneratorServiceProvider" --tag=config
+	```
+
+4. Publish the frontend, ==observe that this overwrites any existing "frontend" folder in your base path==.
+	```
+	php artisan vendor:publish --provider="CrestApps\CodeGenerator\CodeGeneratorServiceProvider" --tag=frontend
+	```
+
+5. Publish the quasar templates
+	```
+	php artisan vendor:publish --provider="CrestApps\CodeGenerator\CodeGeneratorServiceProvider" --tag=quasar
+	```
+
+
+> A layout is required for the default views! The code generator allows you to create a layout using the command-line. Of cource you can use your own layout. You'll only need to include [CSS bootstrap framework](http://getbootstrap.com/ "CSS bootstrap framework") in your layout for the default templates to work properly. Additionally, you can chose to you design your own templetes using a different or no css framework.
 
 ## Lessons
-Checkout our channel on <a href="https://www.youtube.com/channel/UCkEd0nOoRf3o0ahspAu7Y9w/videos" target="_blank" title="CrestApps YouTube Channel">YouTube.com</a> 
+Checkout our channel on <a href="https://www.youtube.com/channel/UCkEd0nOoRf3o0ahspAu7Y9w/videos" target="_blank" title="CrestApps YouTube Channel">YouTube.com</a>
 * https://youtu.be/l21qNcsMAWg
 * https://youtu.be/infoecfXOCw
 
@@ -129,9 +145,9 @@ Checkout our channel on <a href="https://www.youtube.com/channel/UCkEd0nOoRf3o0a
 </li>
 </ul>
 
-> Full documentation available at [CrestApps.com](https://www.crestapps.com/laravel-code-generator/docs/2.3 "Laravel Code Generator Documentation"). 
+> Full documentation available at [CrestApps.com](https://www.crestapps.com/laravel-code-generator/docs/2.3 "Laravel Code Generator Documentation").
 
-> Live demo is available at [CrestApps.com](https://www.crestapps.com/laravel-code-generator/demos/v2-3 "Laravel Code Generator Live Demo"). 
+> Live demo is available at [CrestApps.com](https://www.crestapps.com/laravel-code-generator/demos/v2-3 "Laravel Code Generator Live Demo").
 
 ## Contribution
 Do you like this project and want to contribute?
