@@ -15,6 +15,7 @@ class Config
      * @var Illuminate\Config\Repository
      */
     private static $repository;
+    private static $config_file_name;
 
     /**
      * Gets the default value for whether to use smart migrations or not

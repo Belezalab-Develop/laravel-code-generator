@@ -19,27 +19,27 @@ class CodeGeneratorServiceProvider extends ServiceProvider
 
         // publish the config base file
         $this->publishes([
-            $dir . 'config/laravel-code-generator.php' => config_path('laravel-code-generator.php'),
+            $dir . 'config/laravel-code-generator.php' => config_path('laravel-code-generator.php')
         ], 'config');
 
         // publish the default-template
         $this->publishes([
-            $dir . 'templates/default' => $this->codeGeneratorBase('templates/default'),
+            $dir . 'templates/default' => $this->codeGeneratorBase('templates/default')
         ], 'default-template');
 
         // publish the defaultcollective-template
         $this->publishes([
-            $dir . 'templates/default-collective' => $this->codeGeneratorBase('templates/default-collective'),
+            $dir . 'templates/default-collective' => $this->codeGeneratorBase('templates/default-collective')
         ], 'default-collective-template');
 
         // publish the defaultquasar-template
         $this->publishes([
-            $dir . 'templates/quasar' => $this->codeGeneratorBase('templates/quasar'),
+            $dir . 'templates/quasar' => $this->codeGeneratorBase('templates/quasar')
         ], 'quasar');
 
         // publish frontend quasar-app
         $this->publishes([
-            $dir . 'templates/frontend' => base_path('frontend'),
+            $dir . 'templates/frontend' => base_path('frontend')
         ], 'frontend');
     }
 

@@ -508,7 +508,7 @@ trait CommonCommand
         $templateName = $templateName ?: Config::getDefaultTemplateName();
         $path = base_path(Config::getTemplatesPath() . Helpers::getPathWithSlash($templateName));
 
-        if (!File::isDirectory($path) && in_array($templateName, ['default', 'default-collective', 'default-quasar', 'frontend'])) {
+        if (!File::isDirectory($path) && in_array($templateName, ['default', 'default-collective', 'quasar'])) {
             // If the default templates are not published, utilize the default package path.
 
             $path = __DIR__ . '/../../templates/' . $templateName;
